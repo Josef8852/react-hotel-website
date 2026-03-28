@@ -7,7 +7,7 @@ const Logo: React.FC = () => {
   
   return (
     <div>
-      <Image width={250} height={130} src="/logo.png"  alt="App Logo" />
+      <Image loading="eager" width={250} height={130} src="/logo.png"  alt="App Logo" />
     </div>
   )
   

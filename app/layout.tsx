@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Navigation from "./components/Navigation";
-import Logo from "./components/Logo";
+import Navigation from "@/app/_components/Navigation";
+import Logo from "@/app/_components/Logo";
 
 
 const geistSans = Geist({
@@ -17,6 +17,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "React Hotel",
   description: "React Hotel Website",
+  icons: {
+    icon : "logo.png"
+  }
 };
 
  const RootLayout = ({ children}: Readonly<{ children: React.ReactNode;}>) => {

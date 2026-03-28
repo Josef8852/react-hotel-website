@@ -3,10 +3,13 @@
 
 
 
-const Page:React.FC = () => {
+
+const Page= () => {
   
   return (
-    <h2>account page</h2>
+    <div>
+      <h1>Account Page</h1>
+    </div>
   )
     
 }

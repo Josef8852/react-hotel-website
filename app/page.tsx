@@ -2,11 +2,13 @@
 
 
 
+
+
  const Page = ()  => {
 
    return (
      <div>
-       <h1>Hello Next</h1>
+       <h1>React Hotel</h1>
     </div>
   )
   

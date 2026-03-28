@@ -1,11 +1,9 @@
-
-const Page:React.FC = () => {
-  
+const Page = () => {
   return (
-    <h2>cabins page</h2>
-  )
-    
-}
-
+    <div>
+      <h1>Cabins Page</h1>
+    </div>
+  );
+};
 
 export default Page;

@@ -15,8 +15,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "React Hotel",
-  description: "React Hotel Website",
+  title: {
+    default : "React Hotel" ,
+    template: "%s | React Hotel",
+  },
+  description: "Luxurious cabin hotel",
   icons: {
     icon : "logo.png"
   }

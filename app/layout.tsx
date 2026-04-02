@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Navigation from "@/app/_components/Navigation";
-import Logo from "@/app/_components/Logo";
 import "@/app/_styles/global.css"
+import Header from "@/app/_components/Header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,7 +20,7 @@ export const metadata: Metadata = {
   },
   description: "Luxurious cabin hotel",
   icons: {
-    icon : "logo.png"
+    icon : "Logo.png"
   }
 };
 
@@ -31,14 +30,13 @@ export const metadata: Metadata = {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col  bg-primary-950 text-primary-100 ">
-        <header>
-          <Logo/>
-        </header>
-        <main>
-          <Navigation/>
-          {children}
-        </main>
+      <body className="min-h-full flex flex-col antialiased  bg-primary-950 text-primary-100  ">
+        <Header/>
+        <div className="flex-1 px-8 py-12" >
+          <main className="max-w-7xl mx-auto">
+            {children}
+          </main>
+        </div>
       </body>
     </html>
   );

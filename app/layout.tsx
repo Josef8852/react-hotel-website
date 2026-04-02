@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Navigation from "@/app/_components/Navigation";
 import Logo from "@/app/_components/Logo";
-
+import "@/app/_styles/global.css"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col  bg-primary-950 text-primary-100 ">
         <header>
           <Logo/>
         </header>

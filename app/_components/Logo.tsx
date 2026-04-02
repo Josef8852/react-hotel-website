@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 
 
@@ -6,9 +7,9 @@ import Image from "next/image";
 const Logo: React.FC = () => {
   
   return (
-    <div>
+    <Link href="/" className="flex items-center" >
       <Image loading="eager" width={250} height={130} src="/logo.png"  alt="App Logo" />
-    </div>
+    </Link>
   )
   
   

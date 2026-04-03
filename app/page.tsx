@@ -2,6 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import bg from "@/public/bg.png"
 
+
+
+
+
 const Page:React.FC = ()  => {
   return (
     <main className="mt-24">

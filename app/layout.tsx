@@ -30,7 +30,7 @@ export const metadata: Metadata = {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col antialiased  bg-primary-950 text-primary-100  ">
+      <body className="min-h-full flex flex-col antialiased  bg-primary-950 text-primary-100 ">
         <Header/>
         <div className="flex-1 px-8 py-12" >
           <main className="max-w-7xl mx-auto">

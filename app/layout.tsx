@@ -19,9 +19,6 @@ export const metadata: Metadata = {
     template: "%s | React Hotel",
   },
   description: "Luxurious cabin hotel",
-  icons: {
-    icon : "Logo.png"
-  }
 };
 
  const RootLayout = ({ children}: Readonly<{ children: React.ReactNode;}>) => {

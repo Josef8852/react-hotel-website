@@ -1,5 +1,14 @@
 import SelectCountry from "@/app/_components/SelectCountry";
+import { type Metadata } from "next";
 import Image from "next/image";
+
+
+export const metadata: Metadata = {
+  title: "Update Profile",
+
+};
+
+
 
 const  Page:React.FC = ()  => {
 

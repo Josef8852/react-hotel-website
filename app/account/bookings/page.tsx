@@ -1,4 +1,10 @@
 import BookingCard from "@/app/_components/BookingCard";
+import { type Metadata } from "next";
+
+
+export const metadata: Metadata = {
+  title: "Bookings",
+};
 
 
 const  Page:React.FC = () => {

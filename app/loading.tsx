@@ -1,3 +1,5 @@
+import Spinner from "./_components/Spinner";
+
  
  
  
@@ -5,7 +7,7 @@
 const Loading:React.FC = () => {
    
   return (
-    <p>Loading...</p>
+      <Spinner/>
   )
   
 }

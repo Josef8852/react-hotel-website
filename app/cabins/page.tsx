@@ -1,7 +1,7 @@
 import { type Metadata } from "next";
-import CabinCard from "@/app/_components/CabinCard";
-import { getCabins } from "../_services/apiCabins";
-import { Cabin } from "../_components/ComponentsTypes";
+import CabinList from "../_components/CabinList";
+import { Suspense } from "react";
+import Spinner from "../_components/Spinner";
 
 
 
@@ -10,9 +10,8 @@ export const metadata: Metadata = {
 };
 
 
-const Page =  async () => {
+const Page = () => {
   
-  const cabins :  Cabin[] = await getCabins();
  
    return (
      <div>
@@ -27,14 +26,13 @@ const Page =  async () => {
          away from home. The perfect spot for a peaceful, calm vacation. Welcome
          to paradise.
        </p>
- 
-       {cabins.length > 0 && (
-         <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 xl:gap-14">
-           {cabins.map((cabin) => (
-             <CabinCard cabin={cabin} key={cabin.id} />
-           ))}
-         </div>
-       )}
+       
+      {/*seperate fetching data from ui -> streaming*/}
+       
+       <Suspense fallback={<Spinner/>}>
+         <CabinList />
+       </Suspense>
+       
      </div>
    );
 };

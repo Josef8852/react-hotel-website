@@ -1,23 +1,22 @@
 import { supabase } from "./supabase";
 
 
-export const getCabin = async (id:number) => {
+export const getCabin = async (id:string) => {
   const { data, error } = await supabase
     .from('cabins')
     .select('*')
     .eq('id', id)
     .single();
 
-
-
   if (error) {
     console.error(error);
+   throw new Error('Cabin could not be loaded');
   }
 
   return data;
 }
 
-export const  getCabinPrice = async (id:number) =>  {
+export const  getCabinPrice = async (id:string) =>  {
   const { data, error } = await supabase
     .from('cabins')
     .select('regularPrice, discount')

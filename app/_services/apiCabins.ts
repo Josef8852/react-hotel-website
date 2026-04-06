@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import { supabase } from "./supabase";
 
 
@@ -9,7 +10,7 @@ export const getCabin = async (id:string) => {
     .single();
 
   if (error) {
-    console.error(error);
+    notFound();
    throw new Error('Cabin could not be loaded');
   }
 

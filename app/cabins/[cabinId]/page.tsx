@@ -1,4 +1,4 @@
-import { getCabin } from "@/app/_services/apiCabins";
+import { getCabin, getCabins } from "@/app/_services/apiCabins";
 import { UsersIcon } from "@heroicons/react/24/solid";
 import { MapPinIcon } from "@heroicons/react/24/solid";
 import { EyeSlashIcon } from "@heroicons/react/24/solid";
@@ -24,6 +24,21 @@ export const generateMetadata = async ({params} : PageProps) : Promise<Metadata>
   }
   
 } 
+
+
+
+export const generateStaticParams = async () => {
+  
+  const cabins = await getCabins();
+  
+  const ids = cabins.map((cabin) => ({
+    cabinId: String(cabin.id)
+  }))
+  
+  
+  return ids;
+  
+}
 
 
 const Page = async ({params} : PageProps) => {

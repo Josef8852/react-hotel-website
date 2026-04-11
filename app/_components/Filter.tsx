@@ -1,31 +1,43 @@
 "use client"
 
+import {usePathname, useRouter, useSearchParams } from "next/navigation";
 import { FilterType } from "./types";
+import Button from "./Button";
 
 
 
 const Filter: React.FC = () => {
   
   
+  const searchParams = useSearchParams();
+  
+  const router = useRouter();
+  
+  const pathName = usePathname();
+  
+  const activeFilter  = searchParams.get("capacity") ?? "all";
+  
   const handleFilter = (filter : FilterType): void => {
+    
+    const params = new URLSearchParams(searchParams);
+    
+    params.set("capacity", filter);
+    
+    router.replace(`${pathName}?${params.toString()}` , {scroll:false})
     
   }
   
   return (
     
     <div className="border border-primary-800 flex " >
-      <button
-        onClick={() => handleFilter("all")}
-        className="px-5 py-2  hover:bg-primary-700 hover:cursor-pointer " >All cabins</button>
-      <button
-        onClick={() => handleFilter("small")}
-        className="px-5 py-2  hover:bg-primary-700 hover:cursor-pointer" >1 &mdash; 3 Guests</button>
-      <button
-        onClick={() => handleFilter("medium")}
-        className="px-5 py-2  hover:bg-primary-700 hover:cursor-pointer" >4 &mdash; 7 Guests</button>
-      <button o
-        nClick={() => handleFilter("large")}
-        className="px-5 py-2  hover:bg-primary-700 hover:cursor-pointer" >8 and more Guests</button>
+      <Button
+        handleFilter={() => handleFilter("all")} filter="all" activeFilter={activeFilter} >All cabins</Button>
+      <Button
+        handleFilter={() => handleFilter("small")}  filter="small" activeFilter={activeFilter}>1 &mdash; 3 Guests</Button>
+      <Button
+        handleFilter={() => handleFilter("medium")}  filter="medium" activeFilter={activeFilter} >4 &mdash; 7 Guests</Button>
+      <Button 
+        handleFilter={() => handleFilter("large")}  filter="large" activeFilter={activeFilter}>8 and more Guests</Button>
       
     </div>
     

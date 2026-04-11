@@ -43,8 +43,8 @@ const Page = async ({searchParams}:PageProps) => {
        <Filter />  
       </div>
        
-       
-       <Suspense fallback={<Spinner />}>
+       {/*It should have a key for each filter to make the fallback work*/}
+       <Suspense fallback={<Spinner />} key={filter} >
          <CabinList filter = {filter} />
        </Suspense>
        

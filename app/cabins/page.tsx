@@ -2,6 +2,8 @@ import { type Metadata } from "next";
 import CabinList from "../_components/CabinList";
 import { Suspense } from "react";
 import Spinner from "../_components/Spinner";
+import Filter from "../_components/Filter";
+import { FilterType } from "../_components/types";
 
 
 
@@ -10,7 +12,15 @@ export const metadata: Metadata = {
 };
 
 
-const Page = () => {
+interface PageProps {
+  searchParams : Promise<{capacity:FilterType}>
+}
+
+
+const Page = async ({searchParams}:PageProps) => {
+  
+  const filter = (await searchParams).capacity ?? "all"; 
+  
   
  
    return (
@@ -29,8 +39,13 @@ const Page = () => {
        
       {/*seperate fetching data from ui -> streaming*/}
        
-       <Suspense fallback={<Spinner/>}>
-         <CabinList />
+       <div className="flex justify-center mb-8 ">
+       <Filter />  
+      </div>
+       
+       
+       <Suspense fallback={<Spinner />}>
+         <CabinList filter = {filter} />
        </Suspense>
        
      </div>

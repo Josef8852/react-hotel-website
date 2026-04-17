@@ -1,11 +1,13 @@
-import { SelectCountryProps } from "./ComponentsTypes";
+import { getCountries } from "../_services/apiCountries";
+import { Country, SelectCountryProps } from "./ComponentsTypes";
 
 
 
-const SelectCountry: React.FC<SelectCountryProps> = ({ defaultCountry, name, id, className }) => {
+const SelectCountry: React.FC<SelectCountryProps> = async ({ defaultCountry, name, id, className }) => {
   
   
-  const countries = [];
+  const countries : Array<Country> = await getCountries();
+  
   
   
   const flag = countries.find((country) => country.name === defaultCountry)?.flag ?? '';

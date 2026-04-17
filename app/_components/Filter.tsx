@@ -1,7 +1,7 @@
 "use client"
 
 import {usePathname, useRouter, useSearchParams } from "next/navigation";
-import { FilterType } from "./types";
+import { FilterType } from "./ComponentsTypes"
 import Button from "./Button";
 
 

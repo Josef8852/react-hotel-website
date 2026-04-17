@@ -53,3 +53,13 @@ export interface DeleteBookingProps {
   bookingId: number; 
 }
 
+
+export type FilterType = "all" | "small" | "medium" | "large";
+
+
+
+export interface Country {
+  name: string; 
+  flag: string; 
+  independent: boolean; 
+}

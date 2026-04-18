@@ -63,3 +63,8 @@ export interface Country {
   flag: string; 
   independent: boolean; 
 }
+
+
+export interface UpdateProfileFormProps {
+  children: React.ReactNode;
+}

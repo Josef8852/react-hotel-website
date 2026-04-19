@@ -1,3 +1,5 @@
+import BookingForm from "@/app/_components/BookingForm";
+import DateSelector from "@/app/_components/DateSelector";
 import { getCabin, getCabins } from "@/app/_services/apiCabins";
 import { UsersIcon } from "@heroicons/react/24/solid";
 import { MapPinIcon } from "@heroicons/react/24/solid";
@@ -62,7 +64,7 @@ const Page = async ({params} : PageProps) => {
           </div>
   
           <div>
-            <h3 className="text-accent-100 font-black text-7xl mb-5 translate-x-63.5 bg-primary-950 p-6 pb-1 w-[150%]">
+            <h3 className="text-accent-100 font-black text-7xl mb-5  bg-primary-950 p-6 pb-1 ">
               Cabin {name}
             </h3>
   
@@ -94,9 +96,15 @@ const Page = async ({params} : PageProps) => {
         </div>
   
         <div>
-          <h2 className="text-5xl font-semibold text-center">
-            Reserve today. Pay on arrival.
+          <h2 className="text-5xl font-semibold text-center mb-10 text-accent-400">
+            Book {name} today. Pay on arrival.
           </h2>
+          
+            <div className="flex flex-col border border-primary-800 p-7 gap-10">
+            <DateSelector/>
+            <BookingForm/>
+          </div>
+          
         </div>
       </div>
     ); 

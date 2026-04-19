@@ -1,8 +1,4 @@
 
-
-
-
-
 const BookingForm:React.FC = ()  => {
   // CHANGE
   const maxCapacity = 23;

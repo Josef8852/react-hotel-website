@@ -6,7 +6,7 @@ import { Booking } from '../_components/ComponentsTypes';
 
 
 
-export const  getBooking = async (id:number) => {
+export const  getBooking = async (id:string) => {
   const { data, error, count } = await supabase
     .from('bookings')
     .select('*')
@@ -21,7 +21,7 @@ export const  getBooking = async (id:number) => {
   return data;
 }
 
-export const getBookings = async (guestId:number) =>  {
+export const getBookings = async (guestId:string) =>  {
   const { data, error, count } = await supabase
     .from('bookings')
     
@@ -39,7 +39,8 @@ export const getBookings = async (guestId:number) =>  {
   return data;
 }
 
-export const getBookedDatesByCabinId = async (cabinId:number) =>  {
+export const getBookedDatesByCabinId = async (cabinId: string) => {
+  
   let today : Date | string = new Date();
   today.setUTCHours(0, 0, 0, 0);
   today = today.toISOString();
@@ -48,8 +49,8 @@ export const getBookedDatesByCabinId = async (cabinId:number) =>  {
   const { data, error } = await supabase
     .from('bookings')
     .select('*')
-    .eq('cabinId', cabinId)
-    .or(`startDate.gte.${today},status.eq.checked-in`);
+    .eq('cabinID', cabinId)
+    .or(`startDate.gte.${today},status.eq.checked_in`);
 
   if (error) {
     console.error(error);
@@ -111,7 +112,7 @@ export const updateBooking = async (id:number, updatedFields:Partial<Booking>) =
 
 
 
-export const deleteBooking = async (id:number) => {
+export const deleteBooking = async (id:string) => {
   const { data, error } = await supabase.from('bookings').delete().eq('id', id);
 
   if (error) {

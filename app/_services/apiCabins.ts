@@ -11,7 +11,6 @@ export const getCabin = async (id:string) => {
 
   if (error) {
     notFound();
-   throw new Error('Cabin could not be loaded');
   }
 
   return data;

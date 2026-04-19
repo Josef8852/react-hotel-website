@@ -1,6 +1,8 @@
 import BookingForm from "@/app/_components/BookingForm";
 import DateSelector from "@/app/_components/DateSelector";
+import { getBookedDatesByCabinId } from "@/app/_services/apiBookings";
 import { getCabin, getCabins } from "@/app/_services/apiCabins";
+import { getSettings } from "@/app/_services/apiSettings";
 import { UsersIcon } from "@heroicons/react/24/solid";
 import { MapPinIcon } from "@heroicons/react/24/solid";
 import { EyeSlashIcon } from "@heroicons/react/24/solid";
@@ -45,12 +47,15 @@ export const generateStaticParams = async () => {
 
 const Page = async ({params} : PageProps) => {
   
-    const { cabinId } = await params;
+    const { cabinId } = await params; 
+
   
-    const cabin = await getCabin(cabinId);
- 
-    const { id , name, maxCapacity, regularPrice, discount, image, description } =
-      cabin;
+  const [cabin, settings, bookedDates] = await
+    Promise.all([getCabin(cabinId), getSettings(), getBookedDatesByCabinId(cabinId)]);
+  
+    
+  const { id , name, maxCapacity, regularPrice, discount, image, description } =
+    cabin;
   
     return (
       <div className="max-w-6xl mx-auto mt-8">

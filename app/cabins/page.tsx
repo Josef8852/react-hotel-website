@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import Spinner from "../_components/Spinner";
 import Filter from "../_components/Filter";
 import { FilterType } from "../_components/ComponentsTypes";
+import ReservationReminder from "../_components/BookingReminder";
 
 
 
@@ -45,7 +46,8 @@ const Page = async ({searchParams}:PageProps) => {
        
        {/*It should have a key for each filter to make the fallback work*/}
        <Suspense fallback={<Spinner />} key={filter} >
-         <CabinList filter = {filter} />
+         <CabinList filter={filter} />
+         <ReservationReminder/>
        </Suspense>
        
      </div>

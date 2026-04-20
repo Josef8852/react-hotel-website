@@ -1,7 +1,7 @@
 import { getCabins } from "../_services/apiCabins"
 import CabinCard from "./CabinCard"
-import { Cabin } from "./ComponentsTypes";
-import { FilterType } from "./types";
+import { Cabin, FilterType } from "./ComponentsTypes";
+
 
 
 interface CabinListProps {

@@ -3,7 +3,7 @@ import CabinList from "../_components/CabinList";
 import { Suspense } from "react";
 import Spinner from "../_components/Spinner";
 import Filter from "../_components/Filter";
-import { FilterType } from "../_components/types";
+import { FilterType } from "../_components/ComponentsTypes";
 
 
 

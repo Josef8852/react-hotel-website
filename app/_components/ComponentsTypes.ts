@@ -1,12 +1,21 @@
 
 
 export interface Cabin {
- id: number;
+ id: string;
  name: string;
  maxCapacity: number;
  regularPrice: number;
- discount: number;
+  discount: number;
+  description: string; 
  image: string ;
+}
+
+
+export interface Setting {
+  minBookingLength: number; 
+  maxBookingLength: number; 
+  maxNumberGuestsPerBooking: number; 
+  breakfastPrice: number; 
 }
 
 
@@ -67,4 +76,28 @@ export interface Country {
 
 export interface UpdateProfileFormProps {
   children: React.ReactNode;
+}
+
+
+export interface BookingProps {
+  cabin: Cabin; 
+}
+
+
+
+export interface DateSelectorProps {
+  cabin: Cabin; 
+  bookedDates: Array<Date>;
+  settings: Setting;
+}
+
+export interface BookingFormProps {
+  cabin: Cabin; 
+}
+
+
+export interface CabinInfoProps {
+  
+  cabin: Cabin; 
+  
 }

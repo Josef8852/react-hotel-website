@@ -39,7 +39,7 @@ export const getBookings = async (guestId:string) =>  {
   return data;
 }
 
-export const getBookedDatesByCabinId = async (cabinId: string) => {
+export const getBookedDatesByCabinId = async (cabinId: string) : Promise<Array<Date>> => {
   
   let today : Date | string = new Date();
   today.setUTCHours(0, 0, 0, 0);

@@ -1,9 +1,11 @@
 "use client"
 
 import { isWithinInterval } from "date-fns";
-import { DayPicker } from "react-day-picker";
+import {  DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import { DateSelectorProps } from "./ComponentsTypes";
+import useBooking from "../_context/useBooking";
+
 
 const isAlreadyBooked = (range, datesArr) => {
   return (
@@ -15,13 +17,20 @@ const isAlreadyBooked = (range, datesArr) => {
   );
 }
 
-const DateSelector:React.FC<DateSelectorProps> = ({cabin , bookedDates , settings})  => {
+
+
+const DateSelector: React.FC<DateSelectorProps> = ({ cabin, bookedDates, settings }) => {
+  
+  
+  
+  const {range, setRange , resetRange} = useBooking();
+
 
   const regularPrice = 23;
   const discount = 23;
   const numNights = 23;
   const cabinPrice = 23;
-  const range = { from: null, to: null };
+
 
 
   const { minBookingLength, maxBookingLength } = settings; 
@@ -35,12 +44,15 @@ const DateSelector:React.FC<DateSelectorProps> = ({cabin , bookedDates , setting
           months : "flex justify-evenly "
         }}
         mode="range"
-        min={minBookingLength + 1}
+        onSelect={(range) => setRange(range)}
+        selected={range}
+        min={minBookingLength}
         max={maxBookingLength}
         startMonth={new Date()}
         endMonth={new Date(new Date().getFullYear() , 11)}
         captionLayout="dropdown"
         numberOfMonths={2}
+
       />
 
       <div className="flex items-center justify-between px-8 bg-accent-500 text-primary-800 h-18">
@@ -71,9 +83,9 @@ const DateSelector:React.FC<DateSelectorProps> = ({cabin , bookedDates , setting
           ) : null}
         </div>
 
-        {range.from || range.to ? (
+        {range?.from || range?.to ? (
           <button
-            className="border border-primary-800 py-2 px-4 text-sm font-semibold"
+            className="border border-primary-800 py-2 px-4 text-sm font-semibold hover:cursor-pointer "
             onClick={() => resetRange()}
           >
             Clear

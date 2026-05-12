@@ -12,11 +12,11 @@
     "@heroicons/react": "^2.2.0",
     "@supabase/supabase-js": "^2.101.1",
     "date-fns": "^4.1.0",
-    "next": "^16.2.4",
+    "next": "^16.2.6",
     "next-auth": "^5.0.0-beta.31",
-    "react": "19.2.4",
+    "react": "^19.2.6",
     "react-day-picker": "^9.14.0",
-    "react-dom": "19.2.4"
+    "react-dom": "^19.2.6"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

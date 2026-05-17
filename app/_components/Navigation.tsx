@@ -1,12 +1,14 @@
 import Link from "next/link";
+import { auth } from "../_services/auth";
+import Image from "next/image";
 
 
 
 
-const Navigation: React.FC = () => {
+const Navigation: React.FC = async () => {
    
   
-  
+    const session = await auth()
   
   
   return (
@@ -23,12 +25,28 @@ const Navigation: React.FC = () => {
           </Link>
         </li>
         <li>
-          <Link
-            href="/account"
-            className="hover:text-accent-400 transition-colors"
-          >
-            Guest area
-          </Link>
+          {
+            session?.user?.image ?    ( <Link
+              href="/account"
+              className="hover:text-accent-400 transition-colors flex items-center gap-4 "
+            >
+              <Image src={session.user.image}
+                alt="user"
+                className="h-8 rounded-full "
+                referrerPolicy="no-referrer"
+                width={30}
+                height={30} />
+             Guest area
+            </Link>
+          
+
+            ) : <Link
+              href="/account"
+              className="hover:text-accent-400 transition-colors"
+            >
+              Guest area
+            </Link>
+          }
         </li>
       </ul>
     </nav>

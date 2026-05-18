@@ -1,3 +1,4 @@
+import { User } from "next-auth";
 
 
 export interface Cabin {
@@ -93,6 +94,7 @@ export interface DateSelectorProps {
 
 export interface BookingFormProps {
   cabin: Cabin; 
+  user: User;
 }
 
 

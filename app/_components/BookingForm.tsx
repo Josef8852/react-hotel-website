@@ -7,7 +7,7 @@ import { BookingFormProps } from "./ComponentsTypes";
 
 
 
-const BookingForm:React.FC<BookingFormProps> = ({cabin})  => {
+const BookingForm:React.FC<BookingFormProps> = ({cabin , user})  => {
 
   const { maxCapacity } = cabin;
   
@@ -16,7 +16,7 @@ const BookingForm:React.FC<BookingFormProps> = ({cabin})  => {
   return (
     <div className='scale-[1.01]'>
       <div className='bg-primary-800 text-primary-300 px-16 py-2 flex justify-between items-center'>
-        <p>Logged in as</p>
+        <p>Logged in as {user.name}</p>
 
         {/* <div className='flex gap-4 items-center'>
           <img

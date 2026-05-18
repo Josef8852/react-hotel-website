@@ -8,7 +8,7 @@ import Image from "next/image";
 const Navigation: React.FC = async () => {
    
   
-    const session = await auth()
+  const session = await auth();
   
   
   return (

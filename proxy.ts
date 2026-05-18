@@ -1,11 +1,13 @@
 import { auth } from "@/app/_services/auth"
 
 
-export const middleware = auth;
+export default auth; 
 
 
-export const config = {
+ export const config = {
 
   matcher : ["/account"],
   // only for account
 }
+
+

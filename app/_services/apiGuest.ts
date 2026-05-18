@@ -1,7 +1,9 @@
 import { supabase } from "./supabase";
 
-
-
+interface Guest {
+  email: string; 
+  fullName : string 
+}
 
 export const getGuest = async (email : string) => {
   const { data, error } = await supabase
@@ -15,7 +17,7 @@ export const getGuest = async (email : string) => {
 }
 
 
-export const createGuest = async (newGuest) => {
+export const createGuest = async (newGuest : Guest) => {
   const { data, error } = await supabase.from('guests').insert([newGuest]);
 
   if (error) {
@@ -28,7 +30,7 @@ export const createGuest = async (newGuest) => {
 
 
 
-export const updateGuest =  async (id:number, updatedFields)  => {
+export const updateGuest =  async (id:number, updatedFields : Guest)  => {
   const { data, error } = await supabase
     .from('guests')
     .update(updatedFields)

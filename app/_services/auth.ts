@@ -1,18 +1,57 @@
-import NextAuth, { Session } from "next-auth";
+import NextAuth, { NextAuthConfig } from "next-auth";
 import Google from "next-auth/providers/google";
+import { createGuest, getGuest } from "./apiGuest";
 
+// extend user
+declare module "next-auth" {
+  interface Session {
+    user: {
+      guestId: number;
+    }
+  }
+}
 
-const authConfig = {
+const authConfig : NextAuthConfig= {
   providers: [
     Google({
       clientId: process.env.AUTH_GOOGLE_ID,
       clientSecret: process.env.AUTH_GOOGLE_SECRET
     })],
   callbacks: {
-    authorized({auth} : {auth : Session | null}) {
+
+    
+    authorized({auth}) {
 
       return !!auth?.user;
+    },
+
+    
+    async signIn ({user}) {
+      try {
+        const existingGuest = await getGuest(user.email!);
+
+        if (!existingGuest) {
+          await createGuest({
+            email: user.email! , 
+              fullName : user.name!
+          });
+        }
+        
+        return true;
+      }
+      catch {
+        return false;
+      }
+    }, 
+
+    async session({session}) {
+      const guest = await getGuest(session.user.email);
+
+      session.user.guestId = guest.id;
+      return session; 
     }
+    
+    
   }, 
   pages: {
     signIn: "/login" ,

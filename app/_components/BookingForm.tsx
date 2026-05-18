@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image";
 import useBooking from "../_context/useBooking";
 import { BookingFormProps } from "./ComponentsTypes";
 
@@ -16,18 +17,18 @@ const BookingForm:React.FC<BookingFormProps> = ({cabin , user})  => {
   return (
     <div className='scale-[1.01]'>
       <div className='bg-primary-800 text-primary-300 px-16 py-2 flex justify-between items-center'>
-        <p>Logged in as {user.name}</p>
 
-        {/* <div className='flex gap-4 items-center'>
-          <img
-            // Important to display google profile images
+        <div className='flex gap-4 items-center'>
+          <Image
             referrerPolicy='no-referrer'
             className='h-8 rounded-full'
-            src={user.image}
-            alt={user.name}
+            src={String(user.image)}
+            alt={String(user.name)}
+            width={30}
+            height={30}
           />
-          <p>{user.name}</p>
-        </div> */}
+                  <p>Logged in as {user.name}</p>
+        </div> 
       </div>
         
       <p>{String(range?.from)} to {String(range?.to)}</p>

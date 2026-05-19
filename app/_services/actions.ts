@@ -1,6 +1,7 @@
 // server actions
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { isValidNationalID } from "../_utils/helpers";
 import { Guest, updateGuest } from "./apiGuest";
 import { auth, signIn, signOut } from "./auth";
@@ -43,6 +44,8 @@ export const updateProfileAction = async (formData: FormData) => {
 
   const guestId  : number = session.user.guestId;
   
-  updateGuest(guestId , updateFields);
+  updateGuest(guestId, updateFields);
+
+  revalidatePath("/account/profile");
   
 }

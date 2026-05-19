@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { updateProfileAction } from "../_services/actions";
 import { UpdateProfileFormProps } from "./ComponentsTypes";
+import { useFormStatus } from "react-dom";
 
 
 
@@ -57,9 +58,7 @@ const UpdateProfileForm:React.FC<UpdateProfileFormProps> = ({children , guest}) 
       </div>
 
       <div className="flex justify-end items-center gap-6">
-        <button className="bg-accent-500 px-8 py-4 text-primary-800 font-semibold hover:bg-accent-600 transition-all disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300 hover:cursor-pointer ">
-          Update profile
-        </button>
+        <Button/>
       </div>
     </form>
   )
@@ -67,6 +66,20 @@ const UpdateProfileForm:React.FC<UpdateProfileFormProps> = ({children , guest}) 
   
 }
 
+const Button: React.FC = () => {
 
+
+   // can only be used inside a component that lives in a component that has a form :) 
+  
+  const { pending } = useFormStatus();
+
+ 
+  
+  return (
+    <button disabled={pending} className="bg-accent-500 px-8 py-4 text-primary-800 font-semibold hover:bg-accent-600 transition-all disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300 hover:cursor-pointer ">
+      {pending ? "Updating..." : "Update profile"}
+    </button>
+  )
+}
 
 export default UpdateProfileForm;

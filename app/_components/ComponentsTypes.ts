@@ -1,4 +1,5 @@
 import { User } from "next-auth";
+import { Guest } from "../_services/apiGuest";
 
 
 export interface Cabin {
@@ -77,6 +78,7 @@ export interface Country {
 
 export interface UpdateProfileFormProps {
   children: React.ReactNode;
+  guest: Guest;
 }
 
 

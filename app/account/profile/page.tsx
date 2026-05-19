@@ -1,5 +1,7 @@
 import SelectCountry from "@/app/_components/SelectCountry";
 import UpdateProfileForm from "@/app/_components/UpdateProfileForm";
+import { getGuest } from "@/app/_services/apiGuest";
+import auth from "@/proxy";
 import { type Metadata } from "next";
 
 
@@ -11,13 +13,17 @@ export const metadata: Metadata = {
 
 
 
-const  Page:React.FC = ()  => {
+const  Page:React.FC = async ()  => {
 
     
+  const session = await auth(); 
+
+  if (!session?.user.email) throw new Error("User email not found"); 
   
-  const countryFlag = "pt.jpg";
-  const nationality = "portugal";
- 
+  const guest = await getGuest(session.user.email);
+  
+
+
 
   return (
     <div>
@@ -30,13 +36,13 @@ const  Page:React.FC = ()  => {
         faster and smoother. See you soon!
       </p>
 
-      <UpdateProfileForm>
+      <UpdateProfileForm  guest={guest} >
         {/*Server passed as children*/}
         <SelectCountry
           name="nationality"
           id="nationality"
           className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
-          defaultCountry={nationality}
+          defaultCountry={guest.nationality}
         />
       </UpdateProfileForm>
    

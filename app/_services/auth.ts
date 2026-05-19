@@ -1,4 +1,4 @@
-import NextAuth, { NextAuthConfig } from "next-auth";
+import NextAuth, { DefaultSession, NextAuthConfig } from "next-auth";
 import Google from "next-auth/providers/google";
 import { createGuest, getGuest } from "./apiGuest";
 
@@ -7,7 +7,7 @@ declare module "next-auth" {
   interface Session {
     user: {
       guestId: number;
-    }
+    } & DefaultSession["user"]
   }
 }
 
@@ -32,8 +32,8 @@ const authConfig : NextAuthConfig= {
 
         if (!existingGuest) {
           await createGuest({
-            email: user.email! , 
-              fullName : user.name!
+            email: user.email!, 
+            fullName : user.name!
           });
         }
         
@@ -47,6 +47,9 @@ const authConfig : NextAuthConfig= {
     async session({session}) {
       const guest = await getGuest(session.user.email);
 
+
+      if (!guest) throw new Error("Guest not found");
+      
       session.user.guestId = guest.id;
       return session; 
     }

@@ -22,7 +22,7 @@ export interface Setting {
 
 
 export interface Booking {
-  id: number;
+  id: string;
   created_at: Date | string | number; 
   startDate: Date; 
   endDate: Date; 
@@ -60,7 +60,7 @@ export interface BookingCardProps {
 
 
 export interface DeleteBookingProps {
-  bookingId: number; 
+  bookingId: string; 
 }
 
 

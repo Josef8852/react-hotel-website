@@ -19,15 +19,19 @@ const BookingCard: React.FC<BookingCardProps> = ({ booking }) => {
     totalPrice,
     numGuests,
     status,
+    cabins,
     created_at,
-    cabins: { name, image },
   } = booking;
 
+
+  const { name, image } = cabins!;
+  
   return (
     <div className='flex border border-primary-800'>
       <div className='relative h-32 aspect-square'>
         <Image
-          src={image}
+          src={image!}
+         fill
           alt={`Cabin ${name}`}
           className='object-cover border-r border-primary-800'
         />
@@ -77,7 +81,7 @@ const BookingCard: React.FC<BookingCardProps> = ({ booking }) => {
           <PencilSquareIcon className='h-5 w-5 text-primary-600 group-hover:text-primary-800 transition-colors' />
           <span className='mt-1'>Edit</span>
         </a>
-        <DeleteBooking bookingId={id} />
+        <DeleteBooking bookingId={id!} />
       </div>
     </div>
   );

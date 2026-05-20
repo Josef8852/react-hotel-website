@@ -1,5 +1,8 @@
 import BookingCard from "@/app/_components/BookingCard";
+import { getBookings } from "@/app/_services/apiBookings";
+import auth from "@/proxy";
 import { type Metadata } from "next";
+import Link from "next/link";
 
 
 export const metadata: Metadata = {
@@ -7,9 +10,11 @@ export const metadata: Metadata = {
 };
 
 
-const  Page:React.FC = () => {
+const Page: React.FC = async () => {
 
-  const bookings = [];
+  const session = await auth();
+
+  const bookings = await getBookings(String(session?.user.guestId));
 
   return (
     <div>
@@ -20,9 +25,9 @@ const  Page:React.FC = () => {
       {bookings.length === 0 ? (
         <p className="text-lg">
           You have no bookings yet. Check out our{" "}
-          <a className="underline text-accent-500" href="/cabins">
+          <Link className="underline text-accent-500" href="/cabins">
             luxury cabins &rarr;
-          </a>
+          </Link>
         </p>
       ) : (
         <ul className="space-y-6">

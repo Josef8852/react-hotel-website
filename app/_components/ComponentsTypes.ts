@@ -35,11 +35,10 @@ export interface Booking {
   status:  "unconfirmed" | "checked_in" | "checked_out";
   hasBreakfast: boolean; 
   isPaid: boolean; 
-  observasions: string; 
-  cabins: Cabin;
+  cabins: { name : string , image : string};
   cabinID: number; 
   guestID: number;
-}
+} 
 
 
 export interface CabinCardProps {
@@ -56,7 +55,7 @@ export interface SelectCountryProps {
 
 
 export interface BookingCardProps {
-  booking: Booking; 
+  booking: Partial<Booking>; 
 }
 
 

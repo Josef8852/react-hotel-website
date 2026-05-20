@@ -6,7 +6,7 @@ import { Booking } from '../_components/ComponentsTypes';
 
 
 
-export const  getBooking = async (id:string) => {
+export const  getBooking = async (id:string) : Promise<Booking> => {
   const { data, error, count } = await supabase
     .from('bookings')
     .select('*')
@@ -21,14 +21,14 @@ export const  getBooking = async (id:string) => {
   return data;
 }
 
-export const getBookings = async (guestId:string) =>  {
+export const getBookings = async (guestId:string) : Promise<Partial<Booking>[]> =>  {
   const { data, error, count } = await supabase
     .from('bookings')
     
     .select(
-      'id, created_at, startDate, endDate, numNights, numGuests, totalPrice, guestId, cabinId, cabins(name, image)'
+      'id, created_at, startDate, endDate, numNights, numGuests, totalPrice, guestID, cabinID, cabins(name, image)'
     )
-    .eq('guestId', guestId)
+    .eq('guestID', guestId)
     .order('startDate');
 
   if (error) {
@@ -36,7 +36,10 @@ export const getBookings = async (guestId:string) =>  {
     throw new Error('Bookings could not get loaded');
   }
 
-  return data;
+  return (data ?? []).map((booking) => ({
+    ...booking,
+    cabins: Array.isArray(booking.cabins) ? booking.cabins[0] : booking.cabins,
+  }));
 }
 
 export const getBookedDatesByCabinId = async (cabinId: string) : Promise<Array<Date>> => {

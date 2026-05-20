@@ -1,21 +1,24 @@
 "use client"
 
-import { isWithinInterval } from "date-fns";
-import {  DayPicker } from "react-day-picker";
+import { isPast, isWithinInterval } from "date-fns";
+import {  DateRange, DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import { DateSelectorProps } from "./ComponentsTypes";
 import useBooking from "../_context/useBooking";
+import { differenceInDays, isSameDay } from "date-fns/fp";
 
 
-const isAlreadyBooked = (range, datesArr) => {
-  return (
-    range.from &&
-    range.to &&
-    datesArr.some((date) =>
-      isWithinInterval(date, { start: range.from, end: range.to })
-    )
+const isAlreadyBooked = (range: DateRange, datesArr: Date[]) => {
+
+    if (!range?.from || !range?.to) return false;
+  
+  const { from, to } = range;
+
+
+  return datesArr.some((date) =>
+    isWithinInterval(date, { start: from, end: to })
   );
-}
+};
 
 
 
@@ -25,17 +28,20 @@ const DateSelector: React.FC<DateSelectorProps> = ({ cabin, bookedDates, setting
   
   const {range, setRange , resetRange} = useBooking();
 
+  const displayRange :DateRange | undefined= isAlreadyBooked(range! , bookedDates) ? undefined : range ;
 
-  const regularPrice = 23;
-  const discount = 23;
-  const numNights = 23;
-  const cabinPrice = 23;
+  const { regularPrice, discount } = cabin;
+ 
+  const numNights = displayRange?.from && displayRange?.to ?
+    differenceInDays(displayRange?.to, displayRange?.from) : 0;
 
-
+  const cabinPrice = numNights * (regularPrice - discount);
 
   const { minBookingLength, maxBookingLength } = settings; 
 
 
+
+  
   return (
     <div className="flex flex-col justify-between">
       <DayPicker
@@ -52,7 +58,7 @@ const DateSelector: React.FC<DateSelectorProps> = ({ cabin, bookedDates, setting
         endMonth={new Date(new Date().getFullYear() , 11)}
         captionLayout="dropdown"
         numberOfMonths={2}
-
+        disabled={(curDate) =>isPast(curDate) || bookedDates.some((date) => isSameDay(date ,curDate))}
       />
 
       <div className="flex items-center justify-between px-8 bg-accent-500 text-primary-800 h-18">

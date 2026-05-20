@@ -108,4 +108,5 @@ export interface CabinInfoProps {
 
 export interface SubmitButtonProps {
   children: React.ReactNode; 
+  submitLabel: string; 
 }

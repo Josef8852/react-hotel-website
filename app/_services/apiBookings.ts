@@ -79,20 +79,17 @@ export const getBookedDatesByCabinId = async (cabinId: string) : Promise<Array<D
 
 
 
-export const createBooking = async (newBooking:Booking)  => {
-  const { data, error } = await supabase
+export const createBooking = async (newBooking:Partial<Booking>)  => {
+  const { error } = await supabase
     .from('bookings')
-    .insert([newBooking])
-
-    .select()
-    .single();
-
+    .insert([newBooking]);
+  
   if (error) {
     console.error(error);
     throw new Error('Booking could not be created');
   }
 
-  return data;
+
 }
 
 

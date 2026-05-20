@@ -2,7 +2,10 @@
 
 import Image from "next/image";
 import useBooking from "../_context/useBooking";
-import { BookingFormProps } from "./ComponentsTypes";
+import { Booking, BookingFormProps } from "./ComponentsTypes";
+import { differenceInDays } from "date-fns/fp";
+import { createBookingAction } from "../_services/actions";
+import SubmitButton from "./SubmitButton";
 
 
 
@@ -10,9 +13,30 @@ import { BookingFormProps } from "./ComponentsTypes";
 
 const BookingForm:React.FC<BookingFormProps> = ({cabin , user})  => {
 
-  const { maxCapacity } = cabin;
+  const { maxCapacity , regularPrice , discount , id } = cabin;
   
-  const { range } = useBooking();
+  const { range , resetRange } = useBooking();
+
+  const startDate  = range?.from; 
+
+  const endDate = range?.to; 
+
+  const numNights = endDate && startDate ? differenceInDays(endDate, startDate) : 0;
+
+  const cabinPrice = numNights * (regularPrice - discount);
+
+  const bookingData : Partial<Booking> = {
+    startDate, 
+    endDate, 
+    numNights, 
+    cabinPrice, 
+    cabinID : Number(id)
+  }
+
+
+  // will become the first arg
+  const createBookingWithData = createBookingAction.bind(null, bookingData);
+  
 
   return (
     <div className='scale-[1.01]'>
@@ -33,7 +57,12 @@ const BookingForm:React.FC<BookingFormProps> = ({cabin , user})  => {
         
       {range?.to && range?.from ? <p>{String(range.from)} to {String(range.to)}</p> : null }
       
-      <form className='bg-primary-900 py-10 px-16 text-lg flex gap-5 flex-col'>
+      <form
+        action={async (formData) => {
+        await createBookingWithData(formData);
+        resetRange();
+      }}
+        className='bg-primary-900 py-10 px-16 text-lg flex gap-5 flex-col'>
         <div className='space-y-2'>
           <label htmlFor='numGuests'>How many guests?</label>
           <select
@@ -66,11 +95,14 @@ const BookingForm:React.FC<BookingFormProps> = ({cabin , user})  => {
         </div>
 
         <div className='flex justify-end items-center gap-6'>
-          <p className='text-primary-300 text-base'>Start by selecting dates</p>
 
-          <button className='bg-accent-500 px-8 py-4 text-primary-800 font-semibold hover:bg-accent-600 transition-all disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300'>
-            Reserve now
-          </button>
+          {
+            !startDate && !endDate ? <p className='text-primary-300 text-base'>Start by selecting dates</p>
+              :  <SubmitButton submitLabel="Booking...">
+                Book now
+              </SubmitButton>
+          }
+           
         </div>
       </form>
     </div>

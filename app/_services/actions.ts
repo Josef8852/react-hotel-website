@@ -5,7 +5,9 @@ import { revalidatePath } from "next/cache";
 import { isValidNationalID } from "../_utils/helpers";
 import { Guest, updateGuest } from "./apiGuest";
 import { auth, signIn, signOut } from "./auth";
-import { deleteBooking, getBookings } from "./apiBookings";
+import { deleteBooking, getBookings, updateBooking } from "./apiBookings";
+import { Booking } from "../_components/ComponentsTypes";
+import { redirect } from "next/navigation";
 
 
 export const signInAction = async () => {
@@ -45,7 +47,7 @@ export const updateProfileAction = async (formData: FormData) => {
 
   const guestId  : number = session.user.guestId;
   
-  updateGuest(guestId, updateFields);
+  await updateGuest(guestId, updateFields);
 
   revalidatePath("/account/profile");
   
@@ -64,8 +66,44 @@ export const deleteBookingAction = async (bookingId:string) => {
 
   if (!guestBookingIds.includes(bookingId)) throw new Error("You are not allowed to delete this booking"); 
 
-  deleteBooking(bookingId);
+  await deleteBooking(bookingId);
 
   revalidatePath("/account/booking");
+  
+}
+
+
+export const updateBookingAction = async (formData : FormData) => {
+
+  const session = await auth();
+
+  if (!session) throw new Error("You must be logged in");
+
+  const numGuests = formData.get("numGuests") as string; 
+
+  const observations = formData.get("observations") as string; 
+
+  const bookingId = Number(formData.get("bookingId")); 
+
+  const updateFields: Partial<Booking> = {
+    numGuests : Number(numGuests), 
+    observations
+  }
+
+
+  const guestBookings = await getBookings(String(session.user.guestId));
+
+  const guestBookingIds = guestBookings.map((booking) => Number(booking.id));
+
+  if (!guestBookingIds.includes(bookingId)) throw new Error("You are not allowed to delete this booking"); 
+
+  await updateBooking(String(bookingId), updateFields); 
+
+
+  revalidatePath("/account/bookings");
+
+  revalidatePath(`/account/bookings/edit/${String(bookingId)}`);
+  
+  redirect("/account/bookings"); 
   
 }

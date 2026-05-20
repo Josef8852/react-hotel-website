@@ -104,3 +104,8 @@ export interface CabinInfoProps {
   cabin: Cabin; 
   
 }
+
+
+export interface SubmitButtonProps {
+  children: React.ReactNode; 
+}

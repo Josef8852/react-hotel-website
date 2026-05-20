@@ -22,7 +22,7 @@ const  Page:React.FC = async ()  => {
   
   const guest = await getGuest(session.user.email);
   
-
+  
 
 
   return (
@@ -36,13 +36,13 @@ const  Page:React.FC = async ()  => {
         faster and smoother. See you soon!
       </p>
 
-      <UpdateProfileForm  guest={guest} >
+      <UpdateProfileForm  guest={guest!} >
         {/*Server passed as children*/}
         <SelectCountry
           name="nationality"
           id="nationality"
           className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
-          defaultCountry={guest.nationality}
+          defaultCountry={guest!.nationality}
         />
       </UpdateProfileForm>
    

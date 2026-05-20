@@ -7,7 +7,7 @@ import { Booking } from '../_components/ComponentsTypes';
 
 
 export const  getBooking = async (id:string) : Promise<Booking> => {
-  const { data, error, count } = await supabase
+  const { data, error } = await supabase
     .from('bookings')
     .select('*')
     .eq('id', id)
@@ -22,7 +22,7 @@ export const  getBooking = async (id:string) : Promise<Booking> => {
 }
 
 export const getBookings = async (guestId:string) : Promise<Partial<Booking>[]> =>  {
-  const { data, error, count } = await supabase
+  const { data, error } = await supabase
     .from('bookings')
     
     .select(
@@ -98,7 +98,7 @@ export const createBooking = async (newBooking:Booking)  => {
 
 
 
-export const updateBooking = async (id:number, updatedFields:Partial<Booking>) => {
+export const updateBooking = async (id:string, updatedFields:Partial<Booking>) => {
   const { data, error } = await supabase
     .from('bookings')
     .update(updatedFields)

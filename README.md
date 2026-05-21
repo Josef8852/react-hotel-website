@@ -1,17 +1,12 @@
 <div align="center">
 
-# 🏨 React Hotel — The Wild Oasis
+# 🏨 React Hotel
 
 ### A full-stack luxury cabin booking platform built with the latest Next.js App Router architecture
 
 <br/>
 
-![Next.js](https://img.shields.io/badge/Next.js_16-000000?style=for-the-badge&logo=next.js&logoColor=white)
-![React](https://img.shields.io/badge/React_19-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS_v4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
-![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)
-![Google](https://img.shields.io/badge/Google_OAuth-4285F4?style=for-the-badge&logo=google&logoColor=white)
+[![Tech Stack](https://skills.syvixor.com/api/icons?i=nextjs,react,ts,tailwindcss,supabase,authjs,datefns&perline=8)](https://builder.syvixor.com)
 
 </div>
 
@@ -19,7 +14,7 @@
 
 ## 📖 Overview
 
-**The Wild Oasis** is a luxury cabin hotel booking website where guests can browse cabins, pick dates, and reserve their stay — all in a seamless, modern UI. Authentication is handled via Google OAuth, and all data is persisted in Supabase.
+**React Hotel** is a luxury cabin hotel booking website where guests can browse cabins, pick dates, and reserve their stay — all in a seamless, modern UI. Authentication is handled via Google OAuth, and all data is persisted in Supabase.
 
 The project is fully **responsive** — optimised for mobile, tablet, and desktop — and built entirely with **React Server Components**, **Server Actions**, and zero client-side data fetching.
 
@@ -45,15 +40,14 @@ The project is fully **responsive** — optimised for mobile, tablet, and deskto
 
 | Technology | Purpose |
 |---|---|
-| ![Next.js](https://img.shields.io/badge/Next.js-000?logo=next.js&logoColor=white) **Next.js 16** | Full-stack framework — App Router, SSR, Server Actions |
-| ![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB) **React 19** | UI library — Server & Client Components |
-| ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white) **TypeScript** | Type safety across the entire codebase |
-| ![Tailwind](https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwindcss&logoColor=white) **Tailwind CSS v4** | Utility-first styling with custom design tokens |
-| ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?logo=supabase&logoColor=white) **Supabase** | PostgreSQL database + file storage |
-| ![NextAuth](https://img.shields.io/badge/NextAuth_v5-7C3AED?logo=auth0&logoColor=white) **NextAuth v5** | Authentication with Google OAuth provider |
-| ![date-fns](https://img.shields.io/badge/date--fns-F9A8D4?logo=javascript&logoColor=black) **date-fns** | Date formatting and manipulation |
-| ![react-day-picker](https://img.shields.io/badge/react--day--picker-F97316?logo=react&logoColor=white) **react-day-picker** | Accessible, customisable calendar component |
-| ![Heroicons](https://img.shields.io/badge/Heroicons-1D4ED8?logo=tailwindcss&logoColor=white) **Heroicons** | Beautiful SVG icons by the Tailwind CSS team |
+| <img src="https://skills.syvixor.com/api/icons?i=nextjs" height="40" /> **Next.js 16** | Full-stack framework — App Router, SSR, Server Actions |
+| <img src="https://skills.syvixor.com/api/icons?i=react" height="40" /> **React 19** | UI library — Server & Client Components |
+| <img src="https://skills.syvixor.com/api/icons?i=ts" height="40" /> **TypeScript** | Type safety across the entire codebase |
+| <img src="https://skills.syvixor.com/api/icons?i=tailwindcss" height="40" /> **Tailwind CSS v4** | Utility-first styling with custom design tokens |
+| <img src="https://skills.syvixor.com/api/icons?i=supabase" height="40" /> **Supabase** | PostgreSQL database + file storage |
+| <img src="https://skills.syvixor.com/api/icons?i=authjs" height="40" /> **NextAuth v5** | Authentication with Google OAuth provider |
+| <img src="https://skills.syvixor.com/api/icons?i=googlecloud" height="40" /> **Google OAuth** | Social login provider |
+| <img src="https://skills.syvixor.com/api/icons?i=datefns" height="40" /> **date-fns** | Date formatting and manipulation |
 
 ---
 

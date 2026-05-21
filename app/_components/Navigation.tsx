@@ -13,7 +13,7 @@ const Navigation: React.FC = async () => {
 
 
   return (
-    <nav className="z-10 text-xl relative">
+    <nav className="z-100 text-xl relative">
       {/* Desktop nav */}
       <ul className="hidden md:flex gap-8 lg:gap-16 items-center">
         <li>

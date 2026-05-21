@@ -132,9 +132,11 @@ export const createBookingAction = async (bookingData: Partial<Booking>, formDat
   }
 
 
-  createBooking(newBooking);
+    await createBooking(newBooking);
 
 
-  revalidatePath(`/cabins/${bookingData.cabinID}`);
+   revalidatePath(`/cabins/${bookingData.cabinID}`);
 
+   redirect("/cabins/thankyou");
+  
 }

@@ -20,7 +20,7 @@ const Page: React.FC = () => {
     <div className="grid grid-cols-1 md:grid-cols-5 gap-x-12 lg:gap-x-24 gap-y-10 md:gap-y-32 text-lg items-center">
       <div className="md:col-span-3">
         <h1 className="text-3xl md:text-4xl mb-6 md:mb-10 text-accent-400 font-medium">
-          Welcome to The Wild Oasis
+          Welcome to React Hotel
         </h1>
 
         <div className="space-y-8">

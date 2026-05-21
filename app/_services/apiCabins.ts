@@ -34,7 +34,7 @@ export const  getCabinPrice = async (id:string) =>  {
 export const getCabins = async () : Promise<Cabin[]> =>  {
   const { data, error } = await supabase
     .from('cabins')
-    .select('id, name, maxCapacity, regularPrice, discount, image')
+    .select('id, name, maxCapacity, regularPrice, discount, image ,description')
     .order('name');
 
   if (error) {

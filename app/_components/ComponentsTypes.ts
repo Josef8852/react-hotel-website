@@ -110,3 +110,10 @@ export interface SubmitButtonProps {
   children: React.ReactNode; 
   submitLabel: string; 
 }
+
+
+export interface MobileNavMenuProps {
+  isLoggedIn: boolean;
+  userImage?: string | null;  
+  userName?: string | null; 
+}

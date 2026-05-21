@@ -12,13 +12,13 @@ const CabinCard: React.FC<CabinCardProps> = ({cabin}) => {
   const { id, name, maxCapacity, regularPrice, discount, image } = cabin;
  
    return (
-     <div className="flex border-primary-800 border">
-       <div className="flex-1 relative">
+     <div className="flex flex-col sm:flex-row border-primary-800 border">
+       <div className="relative h-48 sm:h-auto sm:flex-1">
        <Image
         fill
          src={image}
          alt={`Cabin ${name}`}
-         className="flex-1 border-r border-primary-800 object-cover "
+         className="border-b sm:border-b-0 sm:border-r border-primary-800 object-cover"
          />
        </div>
  

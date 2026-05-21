@@ -3,7 +3,7 @@ import Logo from '@/app/_components/Logo';
 
 const  Header:React.FC = ()  => {
   return (
-    <header className='border-b border-primary-900 px-8 py-5   '>
+    <header className='relative border-b border-primary-900 px-4 sm:px-8 py-4 sm:py-5'>
       <div className='flex justify-between items-center max-w-7xl mx-auto'>
         <Logo />
         <Navigation />

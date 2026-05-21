@@ -14,8 +14,8 @@ const CabinInfo: React.FC<CabinInfoProps> = ({ cabin }) => {
   
   return (
 
-    <div className="grid grid-cols-[3fr_4fr] gap-20 border border-primary-800 py-3 px-10 mb-24">
-      <div className="relative scale-[1.15] -translate-x-3">
+    <div className="grid grid-cols-1 md:grid-cols-[3fr_4fr] gap-8 md:gap-20 border border-primary-800 py-3 px-4 sm:px-10 mb-10 md:mb-24">
+      <div className="relative h-64 sm:h-80 md:h-full md:scale-[1.15] md:-translate-x-3">
         <Image
           fill
           className="object-cover"
@@ -24,7 +24,7 @@ const CabinInfo: React.FC<CabinInfoProps> = ({ cabin }) => {
       </div>
 
       <div>
-        <h3 className="text-accent-100 font-black text-7xl mb-5  bg-primary-950 p-6 pb-1 ">
+        <h3 className="text-accent-100 font-black text-4xl sm:text-5xl md:text-7xl mb-5 bg-primary-950 p-4 sm:p-6 pb-1">
           Cabin {name}
         </h3>
 

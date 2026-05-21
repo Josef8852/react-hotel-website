@@ -45,9 +45,9 @@ const DateSelector: React.FC<DateSelectorProps> = ({ cabin, bookedDates, setting
   return (
     <div className="flex flex-col justify-between">
       <DayPicker
-        className="pt-12 mb-10"
+        className="pt-6 sm:pt-12 mb-6 sm:mb-10 text-sm sm:text-base"
         classNames={{
-          months : "flex justify-evenly "
+          months: "flex flex-col sm:flex-row justify-evenly gap-4 sm:gap-0"
         }}
         mode="range"
         onSelect={(range) => setRange(range)}
@@ -61,7 +61,7 @@ const DateSelector: React.FC<DateSelectorProps> = ({ cabin, bookedDates, setting
         disabled={(curDate) =>isPast(curDate) || bookedDates.some((date) => isSameDay(date ,curDate))}
       />
 
-      <div className="flex items-center justify-between px-8 bg-accent-500 text-primary-800 h-18">
+      <div className="flex items-center justify-between px-3 sm:px-8 bg-accent-500 text-primary-800 min-h-16 py-3 flex-wrap gap-2">
         <div className="flex items-baseline gap-6">
           <p className="flex gap-2 items-baseline">
             {discount > 0 ? (

@@ -57,7 +57,7 @@ const Page = async ({params} : PageProps) => {
         
         <div>
           
-          <h2 className="text-5xl font-semibold text-center mb-10 text-accent-400">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-semibold text-center mb-6 sm:mb-10 text-accent-400">
             Book {name} today. Pay on arrival.
           </h2>
             

@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     >
       <body className="min-h-full flex flex-col antialiased  bg-primary-950 text-primary-100 ">
         <Header/>
-        <div className="flex-1 px-8 py-12" >
+        <div className="flex-1 px-4 sm:px-8 py-6 sm:py-12" >
           <main className="max-w-7xl mx-auto">
             <BookingProvider>
                {children}

@@ -13,13 +13,11 @@ const BookingCard: React.FC<BookingCardProps> = ({ booking }) => {
   
   const {
     id,
-    guestID,
     startDate,
     endDate,
     numNights,
     totalPrice,
     numGuests,
-    status,
     cabins,
     created_at,
   } = booking;
@@ -29,7 +27,7 @@ const BookingCard: React.FC<BookingCardProps> = ({ booking }) => {
   
   return (
     <div className='flex border border-primary-800'>
-      <div className='relative h-28 sm:h-32 aspect-square flex-shrink-0'>
+      <div className='relative h-28 sm:h-32 aspect-square shrink-0'>
         <Image
           src={image!}
           fill
@@ -44,11 +42,11 @@ const BookingCard: React.FC<BookingCardProps> = ({ booking }) => {
             {numNights} nights in Cabin {name}
           </h3>
           {isPast(new Date(startDate!)) ? (
-            <span className='bg-yellow-800 text-yellow-200 h-5 sm:h-7 px-2 sm:px-3 uppercase text-[10px] sm:text-xs font-bold flex items-center rounded-sm flex-shrink-0'>
+            <span className='bg-yellow-800 text-yellow-200 h-5 sm:h-7 px-2 sm:px-3 uppercase text-[10px] sm:text-xs font-bold flex items-center rounded-sm shrink-0'>
               past
             </span>
           ) : (
-            <span className='bg-green-800 text-green-200 h-5 sm:h-7 px-2 sm:px-3 uppercase text-[10px] sm:text-xs font-bold flex items-center rounded-sm flex-shrink-0'>
+            <span className='bg-green-800 text-green-200 h-5 sm:h-7 px-2 sm:px-3 uppercase text-[10px] sm:text-xs font-bold flex items-center rounded-sm shrink-0'>
               upcoming
             </span>
           )}
@@ -76,7 +74,7 @@ const BookingCard: React.FC<BookingCardProps> = ({ booking }) => {
 
         {
           isPast(startDate!) ? null : (
-            <div className='flex flex-col border-l border-primary-800 w-20 sm:w-25 flex-shrink-0'>
+            <div className='flex flex-col border-l border-primary-800 w-20 sm:w-25 shrink-0'>
             <Link
               href={`/account/bookings/edit/${id}`}
               className='group flex items-center gap-2 uppercase text-xs font-bold text-primary-300 border-b border-primary-800 grow px-3 hover:bg-accent-600 transition-colors hover:text-primary-900'

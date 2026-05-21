@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { supabase } from "./supabase";
+import { Cabin } from "../_components/ComponentsTypes";
 
 
 export const getCabin = async (id:string) => {
@@ -30,7 +31,7 @@ export const  getCabinPrice = async (id:string) =>  {
   return data;
 }
 
-export const getCabins = async () =>  {
+export const getCabins = async () : Promise<Cabin[]> =>  {
   const { data, error } = await supabase
     .from('cabins')
     .select('id, name, maxCapacity, regularPrice, discount, image')

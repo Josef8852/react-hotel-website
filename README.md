@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🏨 React Hotel
+# 🏨 React Hotel Website
 
 ### A full-stack luxury cabin booking platform built with the latest Next.js App Router architecture
 
